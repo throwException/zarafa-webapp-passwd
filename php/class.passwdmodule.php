@@ -167,7 +167,7 @@ class PasswdModule extends Module
 							$errorMessage = dgettext("plugin_passwd", 'Password is not changed.');
 						}
 					} else {
-						$errorMessage = dgettext("plugin_passwd", 'Password is weak. Password should contain capital, non-capital letters and numbers. Password should have 8 to 20 characters.');
+						$errorMessage = dgettext("plugin_passwd", 'Password is weak. Password should contain capital, non-capital letters and numbers. Password should have 8 to 64 characters.');
 					}
 				} else {
 					$errorMessage = dgettext("plugin_passwd", 'Current password does not match.');
@@ -259,7 +259,7 @@ class PasswdModule extends Module
 					$errorMessage = dgettext("plugin_passwd", 'Password is not changed.');
 				}
 			} else {
-				$errorMessage = dgettext("plugin_passwd", 'Password is weak. Password should contain capital, non-capital letters and numbers. Password should have 8 to 20 characters.');
+				$errorMessage = dgettext("plugin_passwd", 'Password is weak. Password should contain capital, non-capital letters and numbers. Password should have 8 to 64 characters.');
 			}
 		} else {
 			$errorMessage = dgettext("plugin_passwd", 'Current password does not match.');
@@ -279,7 +279,7 @@ class PasswdModule extends Module
 	 * Function will check strength of the password and if it does not meet minimum requirements then
 	 * will return false.
 	 * Password should meet the following criteria:
-	 * - min. 8 chars, max. 20
+	 * - min. 8 chars, max. 64 
 	 * - contain caps and noncaps characters
 	 * - contain numbers
 	 * @param {String} $password password which should be checked.
@@ -287,7 +287,7 @@ class PasswdModule extends Module
 	 */
 	public function checkPasswordStrenth($password)
 	{
-		if (preg_match("#.*^(?=.{8,20})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).*$#", $password)) {
+		if (preg_match("#.*^(?=.{8,64})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).*$#", $password)) {
 			return true;
 		} else {
 			return false;
